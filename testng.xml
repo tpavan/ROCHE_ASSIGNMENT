@@ -1,0 +1,11 @@
+<suite name="Suite_01">
+    <test name="Test_01">
+        <classes>
+            <class name="config.TestConfig"></class>
+            <class name="tests.SearchProduct"></class>
+            <!--<class name="tests.Login"></class>-->
+        </classes>
+    </test> <!-- Test -->
+
+
+</suite> <!-- Suite -->
