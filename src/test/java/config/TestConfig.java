@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 import utils.PropertiesUtil;
 
 import java.time.Duration;
@@ -47,7 +48,8 @@ public class TestConfig {
     }
 
     @BeforeSuite
-    public void suiteSetup() {
+    @Parameters({"env","browser"})
+    public void suiteSetup(String env, String browser) {
 
         LOGGER.info("Script running environment " , env);
         LOGGER.info("Script running browser " , browser);
@@ -96,7 +98,7 @@ public class TestConfig {
                 driver = new ChromeDriver();
             }
         } else {
-            throw new SuiteException(browserName.concat("browser is not able to configure in environment"));
+            throw new SuiteException(browserName.concat("Test Environment setup failed"));
         }
 
         initFluentWait();

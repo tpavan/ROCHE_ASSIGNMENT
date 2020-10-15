@@ -5,6 +5,9 @@
         <listener class-name="Listners.TestListner"/>
     </listeners>
 
+    <parameter name="env" value="mac"></parameter>
+    <parameter name="browser" value="firefox"></parameter>
+
     <test name="Test_01">
         <classes>
             <class name="config.TestConfig"></class>

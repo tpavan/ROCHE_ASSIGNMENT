@@ -3,3 +3,8 @@
 **/test-output/
 **/Logs/
 **/*.class
+/target/test-classes/pages/PageUtil$1.class
+/target/test-classes/pages/PageUtil.class
+/target/test-classes/tests/SearchProduct.class
+/target/test-classes/flows/SearchProductFlows.class
+/target/test-classes/config/TestConfig.class
