@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.function.Function;
 
 public class PageUtil extends TestConfig {
+    private static WebDriver drivers = driver;
 
     public static WebElement fluentClickWithXpath(String xpath) {
         return fluentWait.until(new Function<WebDriver, WebElement>() {
@@ -16,4 +17,13 @@ public class PageUtil extends TestConfig {
             }
         });
     }
+
+    public static void acceptPoupWindow(){
+        drivers.switchTo().alert().accept();
+    }
+
+    public static void rejectPupWindow(){
+        drivers.switchTo().alert().accept();
+    }
+
 }

@@ -13,7 +13,7 @@ public class SearchProductFlows extends TestConfig {
 
 
     public void searchProductAndAddIntoWishList(String productToSearch) {
-        searchProduct(productToSearch);
+        searchProductPage.searchProduct(productToSearch);
         addProductIntoWishList("2221510");
         if(driver.getCurrentUrl().contains("login?")){
             completeSignUp("");

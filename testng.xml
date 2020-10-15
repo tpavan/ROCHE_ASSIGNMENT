@@ -1,9 +1,15 @@
-<suite name="Suite_01">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="suite1" verbose="1">
+
+    <listeners>
+        <listener class-name="Listners.TestListner"/>
+    </listeners>
+
     <test name="Test_01">
         <classes>
             <class name="config.TestConfig"></class>
             <class name="tests.SearchProduct"></class>
-            <!--<class name="tests.Login"></class>-->
+            <class name="tests.Login"></class>
         </classes>
     </test> <!-- Test -->
 
