@@ -16,6 +16,6 @@ Used inbuilt testng reporting tool to generate test reports.
 Automation Framework developed with combination of test suite, but can be easly dicouple from test suite.
 By default test suite run over FireFox browser but can be able to execute on other browser by passing argument run time.
 
-# Exection
-mvn test -browser='chrome' / 'firefox'
+# Execution [-browser run time parameter is optioal]
+mvn clean test -browser='chrome' / 'firefox' 
 testng testng.xml -browser='chrome' / 'firefox'
