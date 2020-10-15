@@ -17,5 +17,5 @@ Automation Framework developed with combination of test suite, but can be easly 
 By default test suite run over FireFox browser but can be able to execute on other browser by passing argument run time.
 
 # Execution [-browser run time parameter is optioal]
-mvn clean test -browser='chrome' / 'firefox' 
-testng testng.xml -browser='chrome' / 'firefox'
+mvn clean test -browser='chrome' / 'firefox' \
+testng testng.xml -browser='chrome' / 'firefox'\
