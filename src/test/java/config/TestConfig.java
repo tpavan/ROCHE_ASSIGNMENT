@@ -1,6 +1,8 @@
 package config;
 
 import exception.SuiteException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,15 +27,20 @@ import java.util.concurrent.TimeUnit;
  * @TestConfig will mange suite lavel configuration
  */
 public class TestConfig {
-    public static String browserValue = "firefox";
+
     public static String appDir = System.getProperty("user.dir");
+    public static String browser = System.getProperty("browser");
+    public static String env = System.getProperty("env");
     public static WebDriver driver;
     public static WebDriverWait wait;
     public static Select select;
     public static Actions actions;
     public static Wait<WebDriver> fluentWait;
     public static String parentWindow;
+    private String defaultEnvName ="mac";
+    private String defaultBrowserName = "firefox";
 
+    private static final Logger LOGGER = LogManager.getLogger(TestConfig.class.getName());
     @BeforeSuite
     public void loadData() {
         PropertiesUtil.loadProperties("app.properties");
@@ -41,8 +48,19 @@ public class TestConfig {
 
     @BeforeSuite
     public void suiteSetup() {
+
+        LOGGER.info("Script running environment " , env);
+        LOGGER.info("Script running browser " , browser);
+
+        if(env != null){
+            defaultEnvName = env ;
+        }
+        if(browser != null){
+            defaultBrowserName = browser;
+        }
+
         try {
-            configureBrowserDriver("test", "firefox");
+            configureBrowserDriver(defaultEnvName, defaultBrowserName);
         } catch (SuiteException e) {
             e.fillInStackTrace();
         }
@@ -59,17 +77,24 @@ public class TestConfig {
 
     public void configureBrowserDriver(String envName, String browserName) throws SuiteException {
 
-        if (System.getProperty("browserValue") != null) {
-            browserName = System.getProperty("browserValue");
-        }
-
         if (browserName.equalsIgnoreCase("firefox")) {
-            System.setProperty("webdriver.gecko.driver", appDir + "/drivers/geckodriver");
-            driver = new FirefoxDriver();
+            if(envName.equalsIgnoreCase("mac")){
+                System.setProperty("webdriver.gecko.driver", appDir + "/drivers/geckodriver");
+                driver = new FirefoxDriver();
+            }else if(envName.equalsIgnoreCase("windows")) {
+                System.setProperty("webdriver.gecko.driver", appDir + "/drivers/geckodriver");
+                driver = new FirefoxDriver();
+            }
 
         } else if (browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", appDir + "/drivers/chromedriver_mac_64");
-            driver = new ChromeDriver();
+
+            if(envName.equalsIgnoreCase("mac")){
+                System.setProperty("webdriver.chrome.driver", appDir + "/drivers/chromedriver_mac_64");
+                driver = new ChromeDriver();
+            }else if(envName.equalsIgnoreCase("windows")) {
+                System.setProperty("webdriver.chrome.driver", appDir + "/drivers/chromedriver_mac_64");
+                driver = new ChromeDriver();
+            }
         } else {
             throw new SuiteException(browserName.concat("browser is not able to configure in environment"));
         }
