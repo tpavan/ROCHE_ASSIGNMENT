@@ -18,4 +18,4 @@ By default test suite run over FireFox browser but can be able to execute on oth
 
 # Execution [-browser run time parameter is optioal]
 mvn clean test -browser='chrome' / 'firefox' \
-testng testng.xml -browser='chrome' / 'firefox'\
+testng testng.xml -browser='chrome' / 'firefox'
