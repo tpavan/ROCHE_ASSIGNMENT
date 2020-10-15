@@ -7,8 +7,8 @@ TestNG\
 Selenium WebDriver\
 Hamcrest Assertion\
 Log4J \
-Maven
-Browser Drivers\
+Maven\
+Browser Drivers[Chrome,Firefox]
 
 # Framework
 Automation Framework used Page Factory Pattern where WebElement initalization in one go which speedup the execution. Currently Test Data maintained into .properties file but can be used with .csv , .xml etc as developed model classe to traverse the data across the application.\
